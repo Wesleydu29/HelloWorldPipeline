@@ -1,0 +1,22 @@
+stages:
+  - setup
+  - build
+  - test
+
+# Étape pour installer les dépendances
+install_dependencies:
+  stage: setup
+  script:
+    - pip install -r requirements.txt
+
+# Étape pour compiler ou exécuter le code
+build_project:
+  stage: build
+  script:
+    - python setup.py build
+
+# Étape pour lancer les tests unitaires
+run_tests:
+  stage: test
+  script:
+    - python -m unittest discover
